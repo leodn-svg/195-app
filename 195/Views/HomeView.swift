@@ -23,7 +23,7 @@ struct HomeView: View {
                 ForEach(WorldBorders.shapes) { shape in
                     MapPolygon(shape.polygon)
                         .foregroundStyle(DesignSystem.unvisitedCountryFill)
-                        .stroke(DesignSystem.countryStroke, lineWidth: 0.4)
+                        .stroke(DesignSystem.countryStroke, style: StrokeStyle(lineWidth: 0.5, lineJoin: .round))
                 }
 
                 Annotation("Berlin", coordinate: berlin) {
