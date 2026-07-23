@@ -17,12 +17,21 @@ struct HomeView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             Map(position: $camera) {
+                // Every country drawn as a grey polygon on top of the muted
+                // base map. Marking a country visited later just recolors its
+                // fill — see WorldBorders / DesignSystem.
+                ForEach(WorldBorders.shapes) { shape in
+                    MapPolygon(shape.polygon)
+                        .foregroundStyle(DesignSystem.unvisitedCountryFill)
+                        .stroke(DesignSystem.countryStroke, lineWidth: 0.4)
+                }
+
                 Annotation("Berlin", coordinate: berlin) {
                     LocationDot()
                 }
                 .annotationTitles(.hidden)
             }
-            .mapStyle(.standard(elevation: .flat, pointsOfInterest: .excludingAll))
+            .mapStyle(.standard(elevation: .flat, emphasis: .muted, pointsOfInterest: .excludingAll, showsTraffic: false))
 
             InfoCard()
         }

@@ -26,6 +26,17 @@ enum DesignSystem {
     /// floats over its lower edge; the remaining area holds country info later.
     static let cardHeight: CGFloat = 357
 
+    // MARK: Map country overlays
+
+    /// Fill for a country the traveller hasn't visited yet.
+    static let unvisitedCountryFill = Color(.systemGray4)
+
+    /// Fill for a visited country (recolored from grey — the "delight" moment).
+    static let visitedCountryFill = Color.accentColor
+
+    /// Hairline border drawn between countries.
+    static let countryStroke = Color(.systemGray2)
+
     /// The card's asymmetric, continuous-curve shape.
     static var infoCardShape: UnevenRoundedRectangle {
         UnevenRoundedRectangle(
